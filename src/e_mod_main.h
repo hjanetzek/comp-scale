@@ -16,6 +16,9 @@
 # define D_(string) (string)
 #endif
 
+#ifdef DBG
+#undef DBG
+#endif
 #define DBG(...)
 /* #define DBG(...) printf(__VA_ARGS__) */
 #define GO_KEY		0
