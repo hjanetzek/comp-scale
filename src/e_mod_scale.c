@@ -14,7 +14,7 @@ struct _Item
 {
   Evas_Object *o, *o_win;
   E_Border *bd;
-  E_Manager_Comp_Source *src;
+  E_Comp_Win *src;
   E_Manager *man;
   double scale;
 
@@ -74,7 +74,7 @@ static void _scale_win_cb_mouse_up(void *data, Evas *e, Evas_Object *obj, void *
 static void _scale_win_cb_mouse_move(void *data, Evas *e, Evas_Object *obj, void *event_info);
 static void _scale_win_cb_delorig(void *data, Evas *e, Evas_Object *obj, void *event_info);
 
-static Item *_scale_win_new(Evas *e, E_Manager *man, E_Manager_Comp_Source *src, E_Desk *desk);
+static Item *_scale_win_new(Evas *e, E_Manager *man, E_Comp_Win *src, E_Desk *desk);
 static void _scale_win_del(Item *it);
 
 static void _scale_finish(void);
@@ -154,7 +154,7 @@ _scale_warp_to_win(Item *it, double advance)
 }
 
 static Eina_Bool
-_scale_warp_pointer(void *data)
+_scale_warp_pointer(void *data EINA_UNUSED)
 {
    Item *it = selected_item;
 
@@ -172,10 +172,11 @@ _scale_warp_pointer(void *data)
 }
 
 static Eina_Bool
-_scale_redraw(void *data)
+_scale_redraw(void *data EINA_UNUSED)
 {
    Eina_List *l;
    Item *it;
+   E_Manager *man;
    double adv, in, duration;
    Eina_Bool finish = EINA_FALSE;
    
@@ -266,7 +267,8 @@ _scale_redraw(void *data)
 	evas_object_color_set(background->o_win, a, a, a, 255);
      }
 
-   e_manager_comp_evas_update(e_manager_current_get());
+   man = e_manager_current_get();
+   e_comp_update(man->comp);
 
    if (finish)
      {
@@ -389,6 +391,7 @@ static void
 _scale_finish()
 {
    Ecore_Event_Handler *handler;
+   E_Manager *man;
    Item *it;
 
    if (selected_item)
@@ -445,14 +448,15 @@ _scale_finish()
 
    {
       Eina_List *l;
-      E_Manager_Comp_Source *src;
+      E_Comp_Win *src;
       E_Manager *man = zone->container->manager;
 
-      EINA_LIST_FOREACH((Eina_List *)e_manager_comp_src_list(man), l, src)
-	e_manager_comp_src_hidden_set(man, src, EINA_FALSE);
+      EINA_LIST_FOREACH((Eina_List *)e_comp_src_list_get(man->comp), l, src)
+	e_comp_src_hidden_set(src, EINA_FALSE);
    }
 
-   e_manager_comp_evas_update(e_manager_current_get());
+   man = e_manager_current_get();
+   e_comp_update(man->comp);
 
    if (!bd_move)
      {
@@ -478,7 +482,10 @@ _scale_finish()
 }
 
 static void
-_scale_win_cb_mouse_in(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_scale_win_cb_mouse_in(void *data,
+                       Evas *e EINA_UNUSED,
+                       Evas_Object *obj EINA_UNUSED,
+                       void *event_info EINA_UNUSED)
 {
    Item *it = data;
 
@@ -501,7 +508,10 @@ _scale_win_cb_mouse_in(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-_scale_win_cb_mouse_out(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_scale_win_cb_mouse_out(void *data,
+                       Evas *e EINA_UNUSED,
+                       Evas_Object *obj EINA_UNUSED,
+                       void *event_info EINA_UNUSED)
 {
    Item *it = data;
 
@@ -520,7 +530,10 @@ _scale_win_cb_mouse_out(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-_scale_win_cb_mouse_down(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_scale_win_cb_mouse_down(void *data,
+                       Evas *e EINA_UNUSED,
+                       Evas_Object *obj EINA_UNUSED,
+                       void *event_info EINA_UNUSED)
 {
    Item *it = data;
    Evas_Event_Mouse_Down *ev = event_info;
@@ -534,7 +547,10 @@ _scale_win_cb_mouse_down(void *data, Evas *e, Evas_Object *obj, void *event_info
 }
 
 static void
-_scale_win_cb_mouse_up(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_scale_win_cb_mouse_up(void *data,
+                       Evas *e EINA_UNUSED,
+                       Evas_Object *obj EINA_UNUSED,
+                       void *event_info EINA_UNUSED)
 {
    Evas_Event_Mouse_Up *ev = event_info;
    Item *it = data;
@@ -565,7 +581,10 @@ _scale_win_cb_mouse_up(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-_scale_win_cb_mouse_move(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_scale_win_cb_mouse_move(void *data,
+                         Evas *e EINA_UNUSED,
+                         Evas_Object *obj EINA_UNUSED,
+                         void *event_info EINA_UNUSED)
 {
    Evas_Event_Mouse_Move *ev = event_info;
    Item *it = data;
@@ -608,7 +627,10 @@ _scale_win_cb_mouse_move(void *data, Evas *e, Evas_Object *obj, void *event_info
 }
 
 static void
-_scale_win_cb_delorig(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_scale_win_cb_delorig(void *data,
+                      Evas *e EINA_UNUSED,
+                      Evas_Object *obj EINA_UNUSED,
+                      void *event_info EINA_UNUSED)
 {
    Item *it = data;
 
@@ -645,17 +667,17 @@ _scale_win_del(Item *it)
 	evas_object_event_callback_del(it->o, EVAS_CALLBACK_MOUSE_UP,
 				       _scale_win_cb_mouse_up);
 
-	e_manager_comp_src_hidden_set(it->man, it->src, EINA_FALSE);
+	e_comp_src_hidden_set(it->src, EINA_FALSE);
 
 	if ((it->bd->desk != current_desk) && (!it->bd->sticky))
 	  {
 	     e_border_hide(it->bd, 2);
-             evas_object_hide(e_manager_comp_src_shadow_get(e_manager_current_get(), it->src));
+             evas_object_hide(e_comp_src_shadow_get(it->src));
 	  }
 	else if (it->was_hidden)
 	  {
 	     e_border_hide(it->bd, 1);
-	     evas_object_hide(e_manager_comp_src_shadow_get(e_manager_current_get(), it->src));
+	     evas_object_hide(e_comp_src_shadow_get(it->src));
 	  }
 	if (it->was_shaded)
 	  {
@@ -676,26 +698,26 @@ _scale_win_del(Item *it)
 }
 
 static Item *
-_scale_win_new(Evas *e, E_Manager *man, E_Manager_Comp_Source *src, E_Desk *desk)
+_scale_win_new(Evas *e, E_Manager *man, E_Comp_Win *src, E_Desk *desk)
 {
    Item *it;
    E_Border *bd;
    
-   if (!e_manager_comp_src_image_get(man, src))
+   if (!e_comp_src_image_get(src))
      return NULL;
 
-   bd = e_manager_comp_src_border_get(man, src);
+   bd = e_comp_src_border_get(src);
 
    if (!bd)
      {
-        Ecore_X_Window win = e_manager_comp_src_window_get(man, src);
+        Ecore_X_Window win = e_comp_src_window_get(src);
         
 	if ((win == zone->container->bg_win) &&
 	    (scale_conf->fade_desktop))
 	  {
 	     it = E_NEW(Item, 1);
 	     it->man = man;
-	     it->o_win = e_manager_comp_src_shadow_get(man, src);
+	     it->o_win = e_comp_src_shadow_get(src);
 	     evas_object_event_callback_add(it->o_win, EVAS_CALLBACK_DEL,
 					    _scale_win_cb_delorig, it);
 	     background = it;
@@ -703,14 +725,14 @@ _scale_win_new(Evas *e, E_Manager *man, E_Manager_Comp_Source *src, E_Desk *desk
 	  }
 	else if (scale_conf->fade_popups)
 	  {
-             E_Popup *pop = e_manager_comp_src_popup_get(man, src);
+             E_Popup *pop = e_comp_src_popup_get(src);
 
 	     if ((pop) && (pop->zone != zone))
 	       return NULL;
 
 	     it = E_NEW(Item, 1);
 	     it->man = man;
-	     it->o_win = e_manager_comp_src_shadow_get(man, src);
+	     it->o_win = e_comp_src_shadow_get(src);
 	     evas_object_event_callback_add(it->o_win, EVAS_CALLBACK_DEL,
 	     				    _scale_win_cb_delorig, it);
 	     popups = eina_list_append(popups, it);
@@ -756,9 +778,9 @@ _scale_win_new(Evas *e, E_Manager *man, E_Manager_Comp_Source *src, E_Desk *desk
    it->bd = bd;
    it->man = man;
    it->src = src;
-   e_manager_comp_src_hidden_set(man, src, EINA_TRUE);
+   e_comp_src_hidden_set(src, EINA_TRUE);
       
-   it->o_win = e_manager_comp_src_image_mirror_add(man, src);
+   it->o_win = e_comp_src_image_mirror_add(src);
    /* it->o_win = evas_object_image_filled_add(e);
     * o = e_manager_comp_src_image_get(man, src);
     * evas_object_image_source_set(it->o_win, o);
@@ -865,7 +887,7 @@ _scale_warp_animator_run(Item *it)
 static void
 _scale_switch(const char *params)
 {
-   Item *it, *sel;
+   Item *it = NULL, *sel;
 
    sel = selected_item;
 
@@ -950,7 +972,7 @@ _scale_switch(const char *params)
 }
 
 static Eina_Bool
-_scale_cb_key_down(void *data, int type, void *event)
+_scale_cb_key_down(void *data EINA_UNUSED, int type EINA_UNUSED, void *event)
 {
    Ecore_Event_Key *ev = event;
 
@@ -1026,7 +1048,7 @@ _scale_cb_key_down(void *data, int type, void *event)
 }
 
 static Eina_Bool
-_scale_cb_key_up(void *data, int type, void *event)
+_scale_cb_key_up(void *data EINA_UNUSED, int type EINA_UNUSED, void *event)
 {
    Ecore_Event_Key *ev = event;
 
@@ -1061,7 +1083,7 @@ static Eina_Bool
 _scale_run(E_Manager *man)
 {
    Eina_List *l;
-   E_Manager_Comp_Source *src;
+   E_Comp_Win *src;
    Ecore_Event_Handler *h;
    Evas *e;
    int i;
@@ -1073,7 +1095,7 @@ _scale_run(E_Manager *man)
    mouse_y = -1;
    warp_pointer = 0;
 
-   e = e_manager_comp_evas_get(man);
+   e = e_comp_evas_get(man->comp);
    if (!e) return EINA_FALSE;
 
    zone = e_util_zone_current_get(e_manager_current_get());
@@ -1122,7 +1144,7 @@ _scale_run(E_Manager *man)
    evas_object_resize(zone_clip, zone->w, zone->h);
    evas_object_show(zone_clip);
 
-   EINA_LIST_FOREACH((Eina_List *)e_manager_comp_src_list(man), l, src)
+   EINA_LIST_FOREACH((Eina_List *)e_comp_src_list_get(man->comp), l, src)
      {
 	Item *it = _scale_win_new(e, man, src, current_desk);
 	if (it) evas_object_clip_set(it->o, zone_clip);
@@ -1238,12 +1260,16 @@ _scale_run(E_Manager *man)
 	  }
      }
 
+#if 0
    double min = 9999.0;
-   
+#endif
+
    EINA_LIST_FOREACH(items, l, it)
      {
+#if 0
 	double dx = ((it->x + it->w/2.0) - (double)(it->bd_x + it->bd->w/2));
 	double dy = ((it->y + it->h/2.0) - (double)(it->bd_y + it->bd->h/2));
+#endif
 
 	it->x += zone->x;
 	it->y += zone->y;
@@ -1324,7 +1350,7 @@ _scale_run(E_Manager *man)
 
 
 static Eina_Bool
-_scale_cb_mouse_move(void *data, int type, void *event)
+_scale_cb_mouse_move(void *data, int type EINA_UNUSED, void *event)
 {
    Ecore_Event_Mouse_Move *ev = event;
 
@@ -1365,7 +1391,7 @@ _scale_cb_mouse_move(void *data, int type, void *event)
 }
 
 static Eina_Bool
-_scale_cb_mouse_down(void *data, int type, void *event)
+_scale_cb_mouse_down(void *data, int type EINA_UNUSED, void *event)
 {
    Ecore_Event_Mouse_Button *ev = event;
    Evas_Button_Flags flags = EVAS_BUTTON_NONE;
@@ -1393,7 +1419,7 @@ _scale_cb_mouse_down(void *data, int type, void *event)
 }
 
 static Eina_Bool
-_scale_cb_mouse_up(void *data, int type, void *event)
+_scale_cb_mouse_up(void *data, int type EINA_UNUSED, void *event)
 {
    Ecore_Event_Mouse_Button *ev = event;
    Evas_Button_Flags flags = EVAS_BUTTON_NONE;
@@ -1484,11 +1510,14 @@ scale_run(E_Manager *man, const char *params, int _init_method)
 
 
 static void
-_scale_handler(void *data, const char *name, const char *info, int val,
+_scale_handler(void *data EINA_UNUSED,
+               const char *name,
+               const char *info,
+               int val EINA_UNUSED,
 	       E_Object *obj, void *msgdata)
 {
    E_Manager *man = (E_Manager *)obj;
-   E_Manager_Comp_Source *src = (E_Manager_Comp_Source *)msgdata;
+   E_Comp_Win *src = (E_Comp_Win *)msgdata;
    Evas *e;
 
    if (strcmp(name, "comp.manager")) return;
@@ -1498,11 +1527,17 @@ _scale_handler(void *data, const char *name, const char *info, int val,
    /* XXX disabled for now. */
    /* return; */
 
-   e = e_manager_comp_evas_get(man);
+   e = e_comp_evas_get(man->comp);
    if (!strcmp(info, "change.comp"))
      {
-        if (!e) DBG("TTT: No comp manager\n");
-        else DBG("TTT: comp canvas = %p\n", e);
+        if (!e)
+          {
+             DBG("TTT: No comp manager\n");
+          }
+        else
+          {
+             DBG("TTT: comp canvas = %p\n", e);
+          }
      }
    else if (!strcmp(info, "resize.comp"))
      {
@@ -1511,7 +1546,7 @@ _scale_handler(void *data, const char *name, const char *info, int val,
    else if (!strcmp(info, "add.src"))
      {
         DBG("%s: %p | %p\n", info, man, src);
-	e_manager_comp_src_hidden_set(man, src, EINA_TRUE);
+	e_comp_src_hidden_set(src, EINA_TRUE);
      }
    else if (!strcmp(info, "del.src"))
      {

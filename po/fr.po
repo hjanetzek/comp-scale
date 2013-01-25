@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comp-Scale module\n"
 "Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-06 08:44+0200\n"
+"POT-Creation-Date: 2013-01-24 22:24-0200\n"
 "PO-Revision-Date: 2011-10-06 10:10+0200\n"
 "Last-Translator: dazibao <dazibao@sfr.fr>\n"
 "Language-Team: Enlightenment French Team <sansgourou@gmail.com>\n"
@@ -82,6 +82,14 @@ msgstr "Fermeture en fondu des racks et pop-up"
 msgid "Darken desktop"
 msgstr "Assombrir le bureau"
 
+#: src/e_mod_config.c:193 src/e_mod_main.c:277 src/e_mod_main.c:303
+#: src/e_mod_main.c:305 src/e_mod_main.c:307 src/e_mod_main.c:309
+#: src/e_mod_main.c:311 src/e_mod_main.c:313 src/e_mod_main.c:315
+#: src/e_mod_main.c:374 src/e_mod_main.c:375 src/e_mod_main.c:376
+#: src/e_mod_main.c:377 src/e_mod_main.c:378 src/e_mod_main.c:503
+msgid "Scale Windows"
+msgstr "Réduction des fenêtres"
+
 #: src/e_mod_config.c:196
 msgid "Pager Settings"
 msgstr "Paramétrage du Pager"
@@ -94,6 +102,11 @@ msgstr "Durée du zoom"
 msgid "Overlap Shelves"
 msgstr "Masquer les racks"
 
+#: src/e_mod_config.c:217
+#, fuzzy
+msgid "Pager"
+msgstr "Réduction du Pager"
+
 #: src/e_mod_main.c:229
 msgid "Look"
 msgstr "Aspect"
@@ -101,14 +114,6 @@ msgstr "Aspect"
 #: src/e_mod_main.c:231
 msgid "Composite Scale Windows"
 msgstr "Réduction composite"
-
-#: src/e_mod_main.c:277 src/e_mod_main.c:303 src/e_mod_main.c:305
-#: src/e_mod_main.c:307 src/e_mod_main.c:309 src/e_mod_main.c:311
-#: src/e_mod_main.c:313 src/e_mod_main.c:315 src/e_mod_main.c:374
-#: src/e_mod_main.c:375 src/e_mod_main.c:376 src/e_mod_main.c:377
-#: src/e_mod_main.c:378 src/e_mod_main.c:503
-msgid "Scale Windows"
-msgstr "Réduction des fenêtres"
 
 #: src/e_mod_main.c:305 src/e_mod_main.c:375
 msgid "Scale Windows (All Desktops)"

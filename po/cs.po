@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Comp-scale\n"
 "Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
-"POT-Creation-Date: 2011-10-16 14:36+0200\n"
+"POT-Creation-Date: 2013-01-24 22:24-0200\n"
 "PO-Revision-Date: 2011-10-16 13:51+0200\n"
 "Last-Translator: Vít Pelčák <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -17,152 +17,155 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: ../src/e_mod_config.c:57
+#: src/e_mod_config.c:57
 msgid "Scale Windows Module"
 msgstr "Modul pro škálování oken"
 
-#: ../src/e_mod_config.c:119
+#: src/e_mod_config.c:119
 msgid "Current Desktop"
 msgstr "Aktuální plocha"
 
-#: ../src/e_mod_config.c:120 ../src/e_mod_config.c:153
+#: src/e_mod_config.c:120 src/e_mod_config.c:153
 msgid "Minimum space between windows"
 msgstr "Minimální místo mezi okny"
 
-#: ../src/e_mod_config.c:122 ../src/e_mod_config.c:155
+#: src/e_mod_config.c:122 src/e_mod_config.c:155
 #, c-format
 msgid "%1.0f"
 msgstr "%1.0f"
 
-#: ../src/e_mod_config.c:126 ../src/e_mod_config.c:159
+#: src/e_mod_config.c:126 src/e_mod_config.c:159
 msgid "Scale duration"
 msgstr "Délka škálování"
 
-#: ../src/e_mod_config.c:128 ../src/e_mod_config.c:161
-#: ../src/e_mod_config.c:200
+#: src/e_mod_config.c:128 src/e_mod_config.c:161 src/e_mod_config.c:200
 #, c-format
 msgid "%1.2f"
 msgstr "%1.2f"
 
-#: ../src/e_mod_config.c:133 ../src/e_mod_config.c:165
+#: src/e_mod_config.c:133 src/e_mod_config.c:165
 msgid "Slotted Layout"
 msgstr "Rozložení do slotů"
 
-#: ../src/e_mod_config.c:135 ../src/e_mod_config.c:167
+#: src/e_mod_config.c:135 src/e_mod_config.c:167
 msgid "Natural Layout"
 msgstr "Přirozené rozložení"
 
-#: ../src/e_mod_config.c:139 ../src/e_mod_config.c:169
+#: src/e_mod_config.c:139 src/e_mod_config.c:169
 msgid "Grow more!"
 msgstr "Ještě zvětšit!"
 
-#: ../src/e_mod_config.c:142 ../src/e_mod_config.c:172
+#: src/e_mod_config.c:142 src/e_mod_config.c:172
 msgid "Keep it tight!"
 msgstr ""
 
-#: ../src/e_mod_config.c:145 ../src/e_mod_config.c:178
+#: src/e_mod_config.c:145 src/e_mod_config.c:178
 msgid "Show iconified windows"
 msgstr ""
 
-#: ../src/e_mod_config.c:152
+#: src/e_mod_config.c:152
 msgid "Show All Desktops"
 msgstr "Zobrazit všechny plochy"
 
-#: ../src/e_mod_config.c:175 ../src/e_mod_config.c:206
+#: src/e_mod_config.c:175 src/e_mod_config.c:206
 msgid "Fade in windows"
 msgstr ""
 
-#: ../src/e_mod_config.c:185 ../src/e_mod_config.c:209
+#: src/e_mod_config.c:185 src/e_mod_config.c:209
 msgid "Fade out shelves and popups"
 msgstr ""
 
-#: ../src/e_mod_config.c:188 ../src/e_mod_config.c:212
+#: src/e_mod_config.c:188 src/e_mod_config.c:212
 msgid "Darken desktop"
 msgstr "Ztmavit plochu"
 
-#: ../src/e_mod_config.c:196
-msgid "Pager Settings"
-msgstr "Nastavení přepínače ploch"
-
-#: ../src/e_mod_config.c:198
-msgid "Zoom duration"
-msgstr "Doba trvání zvětšení"
-
-#: ../src/e_mod_config.c:203
-msgid "Overlap Shelves"
-msgstr "Překrývat panely"
-
-#: ../src/e_mod_main.c:229
-msgid "Look"
-msgstr "Vzhled"
-
-#: ../src/e_mod_main.c:231
-msgid "Composite Scale Windows"
-msgstr "Kompozitní škálování oken"
-
-#: ../src/e_mod_main.c:277 ../src/e_mod_main.c:303 ../src/e_mod_main.c:305
-#: ../src/e_mod_main.c:307 ../src/e_mod_main.c:309 ../src/e_mod_main.c:311
-#: ../src/e_mod_main.c:313 ../src/e_mod_main.c:315 ../src/e_mod_main.c:374
-#: ../src/e_mod_main.c:375 ../src/e_mod_main.c:376 ../src/e_mod_main.c:377
-#: ../src/e_mod_main.c:378 ../src/e_mod_main.c:503
+#: src/e_mod_config.c:193 src/e_mod_main.c:277 src/e_mod_main.c:303
+#: src/e_mod_main.c:305 src/e_mod_main.c:307 src/e_mod_main.c:309
+#: src/e_mod_main.c:311 src/e_mod_main.c:313 src/e_mod_main.c:315
+#: src/e_mod_main.c:374 src/e_mod_main.c:375 src/e_mod_main.c:376
+#: src/e_mod_main.c:377 src/e_mod_main.c:378 src/e_mod_main.c:503
 msgid "Scale Windows"
 msgstr "Škálování oken"
 
-#: ../src/e_mod_main.c:305 ../src/e_mod_main.c:375
+#: src/e_mod_config.c:196
+msgid "Pager Settings"
+msgstr "Nastavení přepínače ploch"
+
+#: src/e_mod_config.c:198
+msgid "Zoom duration"
+msgstr "Doba trvání zvětšení"
+
+#: src/e_mod_config.c:203
+msgid "Overlap Shelves"
+msgstr "Překrývat panely"
+
+#: src/e_mod_config.c:217
+msgid "Pager"
+msgstr ""
+
+#: src/e_mod_main.c:229
+msgid "Look"
+msgstr "Vzhled"
+
+#: src/e_mod_main.c:231
+msgid "Composite Scale Windows"
+msgstr "Kompozitní škálování oken"
+
+#: src/e_mod_main.c:305 src/e_mod_main.c:375
 msgid "Scale Windows (All Desktops)"
 msgstr "Škálování oken (Všechny plochy)"
 
-#: ../src/e_mod_main.c:307 ../src/e_mod_main.c:376
+#: src/e_mod_main.c:307 src/e_mod_main.c:376
 msgid "Scale Windows (By Class)"
 msgstr "Škálování oken (Podle třídy)"
 
-#: ../src/e_mod_main.c:309 ../src/e_mod_main.c:320 ../src/e_mod_main.c:377
-#: ../src/e_mod_main.c:381
+#: src/e_mod_main.c:309 src/e_mod_main.c:320 src/e_mod_main.c:377
+#: src/e_mod_main.c:381
 msgid "Select Next"
 msgstr "Vybrat následující"
 
-#: ../src/e_mod_main.c:311 ../src/e_mod_main.c:322 ../src/e_mod_main.c:378
-#: ../src/e_mod_main.c:382
+#: src/e_mod_main.c:311 src/e_mod_main.c:322 src/e_mod_main.c:378
+#: src/e_mod_main.c:382
 msgid "Select Previous"
 msgstr "Vybrat předchozí"
 
-#: ../src/e_mod_main.c:313
+#: src/e_mod_main.c:313
 msgid "Select Next (All)"
 msgstr "Vybrat následující (Vše)"
 
-#: ../src/e_mod_main.c:315
+#: src/e_mod_main.c:315
 msgid "Select Previous (All)"
 msgstr "Vybrat předchozí (Vše)"
 
-#: ../src/e_mod_main.c:318 ../src/e_mod_main.c:320 ../src/e_mod_main.c:322
-#: ../src/e_mod_main.c:324 ../src/e_mod_main.c:326 ../src/e_mod_main.c:328
-#: ../src/e_mod_main.c:330 ../src/e_mod_main.c:380 ../src/e_mod_main.c:381
-#: ../src/e_mod_main.c:382 ../src/e_mod_main.c:383 ../src/e_mod_main.c:384
-#: ../src/e_mod_main.c:385 ../src/e_mod_main.c:386 ../src/e_mod_main.c:515
+#: src/e_mod_main.c:318 src/e_mod_main.c:320 src/e_mod_main.c:322
+#: src/e_mod_main.c:324 src/e_mod_main.c:326 src/e_mod_main.c:328
+#: src/e_mod_main.c:330 src/e_mod_main.c:380 src/e_mod_main.c:381
+#: src/e_mod_main.c:382 src/e_mod_main.c:383 src/e_mod_main.c:384
+#: src/e_mod_main.c:385 src/e_mod_main.c:386 src/e_mod_main.c:515
 msgid "Scale Pager"
 msgstr ""
 
-#: ../src/e_mod_main.c:324 ../src/e_mod_main.c:383
+#: src/e_mod_main.c:324 src/e_mod_main.c:383
 msgid "Select Left"
 msgstr "Vybrat levý"
 
-#: ../src/e_mod_main.c:326 ../src/e_mod_main.c:384
+#: src/e_mod_main.c:326 src/e_mod_main.c:384
 msgid "Select Right"
 msgstr "Vybrat pravý"
 
-#: ../src/e_mod_main.c:328 ../src/e_mod_main.c:385
+#: src/e_mod_main.c:328 src/e_mod_main.c:385
 msgid "Select Up"
 msgstr "Vybrat nahoru"
 
-#: ../src/e_mod_main.c:330 ../src/e_mod_main.c:386
+#: src/e_mod_main.c:330 src/e_mod_main.c:386
 msgid "Select Down"
 msgstr "Vybrat dolů"
 
-#: ../src/e_mod_main.c:509
+#: src/e_mod_main.c:509
 msgid "Scale all Windows"
 msgstr "Škálovat všechna okna"
 
-#: ../src/e_mod_main.c:614
+#: src/e_mod_main.c:614
 msgid "Settings"
 msgstr "Nastavení"
 

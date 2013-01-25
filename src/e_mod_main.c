@@ -112,7 +112,7 @@ e_mod_border_ignore(E_Border *bd)
 static void
 _e_mod_action(const char *params, int modifiers, int method)
 {
-   int active;
+   int active = 0;
    E_Manager *man;
    Evas *e;
 
@@ -122,7 +122,7 @@ _e_mod_action(const char *params, int modifiers, int method)
    man = eina_list_data_get(e_manager_list());
    if (!man) return;
 
-   e = e_manager_comp_evas_get(man);
+   e = e_comp_evas_get(man->comp);
    if (!e) return;
 
    if (!strncmp(params, "go_pager", 8))
@@ -150,25 +150,27 @@ _e_mod_action(const char *params, int modifiers, int method)
 }
 
 static void
-_e_mod_action_cb_edge(E_Object *obj, const char *params, E_Event_Zone_Edge *ev)
+_e_mod_action_cb_edge(E_Object *obj EINA_UNUSED,
+                      const char *params,
+                      E_Event_Zone_Edge *ev EINA_UNUSED)
 {
    _e_mod_action(params, 0, GO_EDGE);
 }
 
 static void
-_e_mod_action_cb(E_Object *obj, const char *params)
+_e_mod_action_cb(E_Object *obj EINA_UNUSED, const char *params)
 {
    _e_mod_action(params, 0, GO_ACTION);
 }
 
 static void
-_e_mod_action_cb_key(E_Object *obj, const char *params, Ecore_Event_Key *ev)
+_e_mod_action_cb_key(E_Object *obj EINA_UNUSED, const char *params, Ecore_Event_Key *ev)
 {
    _e_mod_action(params, ev->modifiers, GO_KEY);
 }
 
 static void
-_e_mod_action_cb_mouse(E_Object *obj, const char *params, Ecore_Event_Mouse_Button *ev)
+_e_mod_action_cb_mouse(E_Object *obj EINA_UNUSED, const char *params, Ecore_Event_Mouse_Button *ev EINA_UNUSED)
 {
    _e_mod_action(params, 0, GO_MOUSE);
 }
@@ -336,7 +338,7 @@ e_modapi_init(E_Module *m)
 
 
 EAPI int
-e_modapi_shutdown(E_Module *m)
+e_modapi_shutdown(E_Module *m EINA_UNUSED)
 {
    e_configure_registry_item_del("appearance/comp-scale");
    e_configure_registry_category_del("appearance");
@@ -391,7 +393,7 @@ e_modapi_shutdown(E_Module *m)
 }
 
 EAPI int
-e_modapi_save(E_Module *m)
+e_modapi_save(E_Module *m EINA_UNUSED)
 {
    e_config_domain_save("module.scale", conf_edd, scale_conf);
    return 1;
@@ -491,32 +493,32 @@ _gc_shutdown(E_Gadcon_Client *gcc)
 }
 
 static void
-_gc_orient(E_Gadcon_Client *gcc, E_Gadcon_Orient orient)
+_gc_orient(E_Gadcon_Client *gcc, E_Gadcon_Orient orient EINA_UNUSED)
 {
    e_gadcon_client_aspect_set(gcc, 16, 16);
    e_gadcon_client_min_size_set(gcc, 16, 16);
 }
 
 static const char *
-_gc_label_scale(const E_Gadcon_Client_Class *client_class)
+_gc_label_scale(const E_Gadcon_Client_Class *client_class EINA_UNUSED)
 {
    return D_("Scale Windows");
 }
 
 static const char *
-_gc_label_scale_all(const E_Gadcon_Client_Class *client_class)
+_gc_label_scale_all(const E_Gadcon_Client_Class *client_class EINA_UNUSED)
 {
    return D_("Scale all Windows");
 }
 
 static const char *
-_gc_label_pager(const E_Gadcon_Client_Class *client_class)
+_gc_label_pager(const E_Gadcon_Client_Class *client_class EINA_UNUSED)
 {
    return D_("Scale Pager");
 }
 
 static const char *
-_gc_id_new(const E_Gadcon_Client_Class *client_class)
+_gc_id_new(const E_Gadcon_Client_Class *client_class EINA_UNUSED)
 {
    Config_Item *ci = NULL;
 
@@ -525,7 +527,7 @@ _gc_id_new(const E_Gadcon_Client_Class *client_class)
 }
 
 static Evas_Object *
-_gc_icon(const E_Gadcon_Client_Class *client_class, Evas *evas)
+_gc_icon(const E_Gadcon_Client_Class *client_class EINA_UNUSED, Evas *evas)
 {
    Evas_Object *o = NULL;
 
@@ -634,7 +636,10 @@ _scale_gc_menu(Instance *inst, Evas_Event_Mouse_Down *ev)
 }
 
 static void
-_scale_gc_cb_mouse_down_scale(void *data, Evas *evas, Evas_Object *obj, void *event)
+_scale_gc_cb_mouse_down_scale(void *data,
+                              Evas *evas EINA_UNUSED,
+                              Evas_Object *obj EINA_UNUSED,
+                              void *event)
 {
    Instance *inst = NULL;
    Evas_Event_Mouse_Down *ev;
@@ -649,7 +654,10 @@ _scale_gc_cb_mouse_down_scale(void *data, Evas *evas, Evas_Object *obj, void *ev
 }
 
 static void
-_scale_gc_cb_mouse_down_scale_all(void *data, Evas *evas, Evas_Object *obj, void *event)
+_scale_gc_cb_mouse_down_scale_all(void *data,
+                                  Evas *evas EINA_UNUSED,
+                                  Evas_Object *obj EINA_UNUSED,
+                                  void *event)
 {
    Instance *inst = NULL;
    Evas_Event_Mouse_Down *ev;
@@ -664,7 +672,10 @@ _scale_gc_cb_mouse_down_scale_all(void *data, Evas *evas, Evas_Object *obj, void
 }
 
 static void
-_scale_gc_cb_mouse_down_pager(void *data, Evas *evas, Evas_Object *obj, void *event)
+_scale_gc_cb_mouse_down_pager(void *data,
+                              Evas *evas EINA_UNUSED,
+                              Evas_Object *obj EINA_UNUSED,
+                              void *event)
 {
    Instance *inst = NULL;
    Evas_Event_Mouse_Down *ev;
@@ -680,7 +691,7 @@ _scale_gc_cb_mouse_down_pager(void *data, Evas *evas, Evas_Object *obj, void *ev
 
 
 static void
-_scale_gc_cb_menu_post(void *data, E_Menu *menu)
+_scale_gc_cb_menu_post(void *data, E_Menu *menu EINA_UNUSED)
 {
    Instance *inst = NULL;
 
@@ -691,7 +702,9 @@ _scale_gc_cb_menu_post(void *data, E_Menu *menu)
 }
 
 static void
-_scale_gc_cb_menu_configure(void *data, E_Menu *mn, E_Menu_Item *mi)
+_scale_gc_cb_menu_configure(void *data EINA_UNUSED,
+                            E_Menu *mn,
+                            E_Menu_Item *mi EINA_UNUSED)
 {
    if (!scale_conf) return;
    if (scale_conf->cfd) return;
