@@ -1,0 +1,264 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Marc Furtià  i Puig\\\n"
+"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2013-01-29 18:09+0100\n"
+"PO-Revision-Date: 2013-02-01 09:52+0100\n"
+"Last-Translator: Marc Furtià i Puig <marc.furtia@gmail.com>\n"
+"Language-Team: \n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Bookmarks: -1,-1,1139,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: src/e_mod_config.c:57
+msgid "Scale Windows Module"
+msgstr "Mòdul d'ajust de finestres"
+
+#: src/e_mod_config.c:119
+msgid "Current Desktop"
+msgstr "Escriptori actual"
+
+#: src/e_mod_config.c:120
+#: src/e_mod_config.c:153
+msgid "Minimum space between windows"
+msgstr "Espai mínim entre finestres"
+
+#: src/e_mod_config.c:122
+#: src/e_mod_config.c:155
+#, c-format
+msgid "%1.0f"
+msgstr "%1.0f"
+
+#: src/e_mod_config.c:126
+#: src/e_mod_config.c:159
+msgid "Scale duration"
+msgstr "Duració de l'ajust"
+
+#: src/e_mod_config.c:128
+#: src/e_mod_config.c:161
+#: src/e_mod_config.c:200
+#, c-format
+msgid "%1.2f"
+msgstr "%1.2f"
+
+#: src/e_mod_config.c:133
+#: src/e_mod_config.c:165
+msgid "Slotted Layout"
+msgstr "Disposició espaiada"
+
+#: src/e_mod_config.c:135
+#: src/e_mod_config.c:167
+msgid "Natural Layout"
+msgstr "Disposició natural"
+
+#: src/e_mod_config.c:139
+#: src/e_mod_config.c:169
+msgid "Grow more!"
+msgstr "Engrandir més!"
+
+#: src/e_mod_config.c:142
+#: src/e_mod_config.c:172
+msgid "Keep it tight!"
+msgstr "¡Mantenir-ho premut!"
+
+#: src/e_mod_config.c:145
+#: src/e_mod_config.c:178
+msgid "Show iconified windows"
+msgstr "Mostrar finestres minimitzades"
+
+#: src/e_mod_config.c:152
+msgid "Show All Desktops"
+msgstr "Mostrar tots els escriptoris"
+
+#: src/e_mod_config.c:175
+#: src/e_mod_config.c:206
+msgid "Fade in windows"
+msgstr "Les finestres apareixen gradualment "
+
+#: src/e_mod_config.c:185
+#: src/e_mod_config.c:209
+msgid "Fade out shelves and popups"
+msgstr "Alertes y contenidors desapareixen gradualment"
+
+#: src/e_mod_config.c:188
+#: src/e_mod_config.c:212
+msgid "Darken desktop"
+msgstr "Enfosquir escriptori"
+
+#: src/e_mod_config.c:193
+#: src/e_mod_main.c:322
+#: src/e_mod_main.c:348
+#: src/e_mod_main.c:350
+#: src/e_mod_main.c:353
+#: src/e_mod_main.c:356
+#: src/e_mod_main.c:358
+#: src/e_mod_main.c:360
+#: src/e_mod_main.c:363
+#: src/e_mod_main.c:423
+#: src/e_mod_main.c:424
+#: src/e_mod_main.c:426
+#: src/e_mod_main.c:428
+#: src/e_mod_main.c:429
+#: src/e_mod_main.c:563
+msgid "Scale Windows"
+msgstr "Ajustar finestres"
+
+#: src/e_mod_config.c:196
+msgid "Pager Settings"
+msgstr "Preferències de paginació"
+
+#: src/e_mod_config.c:198
+msgid "Zoom duration"
+msgstr "Duració del zoom"
+
+#: src/e_mod_config.c:203
+msgid "Overlap Shelves"
+msgstr "Sobreposar contenidors"
+
+#: src/e_mod_config.c:217
+msgid "Pager"
+msgstr "Paginació"
+
+#: src/e_mod_main.c:273
+msgid "Look"
+msgstr "Vista"
+
+#: src/e_mod_main.c:276
+msgid "Composite Scale Windows"
+msgstr "Ajust de les finestres compostes"
+
+#: src/e_mod_main.c:351
+#: src/e_mod_main.c:425
+msgid "Scale Windows (All Desktops)"
+msgstr "Ajustar finestres (tots els escriptoris)"
+
+#: src/e_mod_main.c:354
+#: src/e_mod_main.c:427
+msgid "Scale Windows (By Class)"
+msgstr "Ajustar finestres (Por classe)"
+
+#: src/e_mod_main.c:356
+#: src/e_mod_main.c:370
+#: src/e_mod_main.c:428
+#: src/e_mod_main.c:432
+msgid "Select Next"
+msgstr "Seleccionar següent"
+
+#: src/e_mod_main.c:358
+#: src/e_mod_main.c:372
+#: src/e_mod_main.c:429
+#: src/e_mod_main.c:433
+msgid "Select Previous"
+msgstr "Seleccionar previ"
+
+#: src/e_mod_main.c:360
+msgid "Select Next (All)"
+msgstr "Seleccionar següent (tot)"
+
+#: src/e_mod_main.c:364
+msgid "Select Previous (All)"
+msgstr "Seleccionar previ (tot)"
+
+#: src/e_mod_main.c:368
+#: src/e_mod_main.c:370
+#: src/e_mod_main.c:372
+#: src/e_mod_main.c:374
+#: src/e_mod_main.c:376
+#: src/e_mod_main.c:378
+#: src/e_mod_main.c:380
+#: src/e_mod_main.c:431
+#: src/e_mod_main.c:432
+#: src/e_mod_main.c:433
+#: src/e_mod_main.c:434
+#: src/e_mod_main.c:435
+#: src/e_mod_main.c:436
+#: src/e_mod_main.c:437
+#: src/e_mod_main.c:575
+msgid "Scale Pager"
+msgstr "Ajustar paginació"
+
+#: src/e_mod_main.c:374
+#: src/e_mod_main.c:434
+msgid "Select Left"
+msgstr "Seleccionar esquerra "
+
+#: src/e_mod_main.c:376
+#: src/e_mod_main.c:435
+msgid "Select Right"
+msgstr "Seleccionar dreta"
+
+#: src/e_mod_main.c:378
+#: src/e_mod_main.c:436
+msgid "Select Up"
+msgstr "Seleccionar dalt"
+
+#: src/e_mod_main.c:380
+#: src/e_mod_main.c:437
+msgid "Select Down"
+msgstr "Seleccionar baix"
+
+#: src/e_mod_main.c:569
+msgid "Scale all Windows"
+msgstr "Ajustar totes las finestres"
+
+#: src/e_mod_main.c:675
+msgid "Settings"
+msgstr "Preferències"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#~ msgid "Use Switch 1"
+#~ msgstr "Cambio de usuarios 1"
+
+#, fuzzy
+#~ msgid ""
+#~ "Scale Module Configuration data needed upgrading. Your old "
+#~ "configuration<br> has been wiped and a new set of defaults initialized. "
+#~ "This<br>will happen regularly during development, so don't report "
+#~ "a<br>bug. This simply means the module needs new configuration<br>data by "
+#~ "default for usable functionality that your old<br>configuration simply "
+#~ "lacks. This new set of defaults will fix<br>that by adding it in. You can "
+#~ "re-configure things now to your<br>liking. Sorry for the inconvenience."
+#~ "<br>"
+#~ msgstr ""
+#~ "La configuración del módulo Skeleton requiere actualizarse. Su "
+#~ "configuración anterior<br> ha sido eliminada y un nuevo conjunto "
+#~ "preferencias por defecto inicializadas. Esto<br>pasará regularmente "
+#~ "durante el desarrollo, por lo que no informe de un <br>error. Simplemente "
+#~ "significa que el módulo necesita una nuevos datos <br>de configuración "
+#~ "predeterminados para usar características de las que su<br>configuración "
+#~ "anterior carece. Este nuevo conjunto de preferencias por defecto "
+#~ "reparará<br>eso. Puede reconfigurar cosas a su <br>gusto. Disculpe las "
+#~ "molestias.<br>"
+
+#, fuzzy
+#~ msgid ""
+#~ "Your Scale Module configuration is NEWER than the module version. This is "
+#~ "very<br>strange. This should not happen unless you downgraded<br>the "
+#~ "module or copied the configuration from a place where<br>a newer version "
+#~ "of the module was running. This is bad and<br>as a precaution your "
+#~ "configuration has been now restored to<br>defaults. Sorry for the "
+#~ "inconvenience.<br>"
+#~ msgstr ""
+#~ "Su configuración del módulo Skeleton es MÁS NUEVA que la versión del "
+#~ "módulo. Eso es<br>extraño. No debería ocurrir a menos que haya "
+#~ "descargado<br>el módulo o haya copiado la configuración de un "
+#~ "sitio<br>con una versión posterior a la que está ejecutando el módulo. "
+#~ "Esto es malo y<br>como precaución su configuración ha sido restaurada a "
+#~ "sus valores <br>por defecto. Disculpe las molestias.<br>"
+
+#, fuzzy
+#~ msgid "Scale Windows Configuration Updated"
+#~ msgstr "Configuración de Skeleton actualizada"
+
+#, fuzzy
+#~ msgid "Skel"
+#~ msgstr "Skeleton"
+
+#~ msgid "Skeleton"
+#~ msgstr "Skeleton"
