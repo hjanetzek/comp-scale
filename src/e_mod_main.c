@@ -159,7 +159,7 @@ _e_mod_action(const char *params, int modifiers, int method)
    man = eina_list_data_get(e_manager_list());
    if (!man) return;
 
-   e = e_comp_evas_get(man->comp);
+   e = man->comp->evas;
    if (!e) return;
 
    if (!strncmp(params, "go_pager", 8))
