@@ -10,7 +10,7 @@ struct _Item
    Evas_Object *o, *o_win;
    E_Border    *bd;
    E_Desk      *desk;
-   E_Comp_Win  *src;
+   E_Manager_Comp_Source  *src;
    E_Manager   *man;
 
    double       x;
@@ -64,7 +64,7 @@ static void      _pager_win_cb_delorig(void *data,
                                        Evas_Object *obj,
                                        void *event_info);
 
-static Item     *_pager_win_new(Evas *e, E_Manager *man, E_Comp_Win *src);
+static Item     *_pager_win_new(Evas *e, E_Manager *man, E_Manager_Comp_Source *src);
 static void      _pager_win_del(Item *it);
 
 static void      _pager_finish();
@@ -171,7 +171,7 @@ _pager_redraw(void *data EINA_UNUSED)
    if (scale_state == SCALE_STATE_HOLD)
      {
         E_Manager *man = e_manager_current_get();
-        e_comp_render_update(man->comp);
+        e_manager_comp_evas_update(man);
         return ECORE_CALLBACK_RENEW;
      }
 
@@ -628,7 +628,7 @@ _pager_win_del(Item *it)
 
    if (it->bd && !it->o)
      {
-        e_comp_win_hidden_set(it->src, EINA_FALSE);
+        e_manager_comp_src_hidden_set(it->man, it->src, EINA_FALSE);
 
         e_object_unref(E_OBJECT(it->bd));
      }
@@ -652,7 +652,7 @@ _pager_win_del(Item *it)
         if ((it->bd->desk != current_desk) && (!it->bd->sticky))
           e_border_hide(it->bd, 2);
 
-        e_comp_win_hidden_set(it->src, EINA_FALSE);
+        e_manager_comp_src_hidden_set(it->man, it->src, EINA_FALSE);
 
         evas_object_del(it->o_win);
         evas_object_del(it->o);
@@ -668,23 +668,23 @@ _pager_win_del(Item *it)
 }
 
 static Item *
-_pager_win_new(Evas *e, E_Manager *man, E_Comp_Win *src)
+_pager_win_new(Evas *e, E_Manager *man, E_Manager_Comp_Source *src)
 {
    Item *it;
    Evas_Object *o, *sh_obj, *obj;
    E_Border *bd;
 
-   sh_obj = src->shobj;
+   sh_obj = e_manager_comp_src_shadow_get(man, src);
    if (!sh_obj) return NULL;
 
-   obj = src->obj;
+   obj = e_manager_comp_src_image_get(man, src);
    if (!obj) return NULL;
 
-   bd = src->bd;
+   bd = e_manager_comp_src_border_get(man, src);
 
    if (!bd)
      {
-        Ecore_X_Window win = src-win;
+        Ecore_X_Window win = e_manager_comp_src_window_get(man, src);
 
         if (win == zone->container->bg_win)
           {
@@ -707,7 +707,7 @@ _pager_win_new(Evas *e, E_Manager *man, E_Comp_Win *src)
           }
         else if (scale_conf->pager_fade_popups)
           {
-             E_Popup *pop = src->pop;
+             E_Popup *pop = e_manager_comp_src_popup_get(man, src);
 
              if ((pop) && (pop->zone != zone))
                return NULL;
@@ -738,7 +738,7 @@ _pager_win_new(Evas *e, E_Manager *man, E_Comp_Win *src)
    it->src = src;
    e_object_ref(E_OBJECT(it->bd));
 
-   e_comp_win_hidden_set(src, EINA_TRUE);
+   e_manager_comp_src_hidden_set(man, src, EINA_TRUE);
 
    items = eina_list_append(items, it);
 
@@ -749,7 +749,7 @@ _pager_win_new(Evas *e, E_Manager *man, E_Comp_Win *src)
        (e_mod_border_ignore(it->bd)))
      return NULL;
 
-   it->o_win = e_comp_win_image_mirror_add(src);
+   it->o_win = e_manager_comp_src_image_mirror_add(man, src);
    /* it->o_win = evas_object_image_filled_add(e);
     * o = e_manager_comp_src_image_get(man, src);
     * evas_object_image_source_set(it->o_win, o); */
@@ -1059,7 +1059,7 @@ static Eina_Bool
 _pager_run(E_Manager *man)
 {
    Evas *e;
-   E_Comp_Win *src;
+   E_Manager_Comp_Source *src;
    Ecore_Event_Handler *h;
    const char *file, *group;
    Eina_List *l;
@@ -1072,7 +1072,7 @@ _pager_run(E_Manager *man)
 
    if (input_win) return EINA_FALSE;
 
-   e = man->comp->evas;
+   e = e_manager_comp_evas_get(man);
    if (!e) return EINA_FALSE;
 
    zone = e_util_zone_current_get(man);
@@ -1147,7 +1147,7 @@ _pager_run(E_Manager *man)
    evas_object_resize(zone_clip, zone_w, zone_h);
    evas_object_show(zone_clip);
 
-   EINA_LIST_FOREACH((Eina_List *)e_comp_win_list_get(man->comp), l, src)
+   EINA_LIST_FOREACH((Eina_List *)e_manager_comp_src_list(man), l, src)
      _pager_win_new(e, man, src);
 
    edje_object_file_get(zone->bg_object, &file, &group);
@@ -1253,7 +1253,7 @@ _pager_handler(void *data EINA_UNUSED,
                void *msgdata)
 {
    E_Manager *man = (E_Manager *)obj;
-   E_Comp_Win *src = (E_Comp_Win *)msgdata;
+   E_Manager_Comp_Source *src = (E_Manager_Comp_Source *)msgdata;
    Evas *e;
 
    /* if (!scale_state) return; */
@@ -1265,7 +1265,7 @@ _pager_handler(void *data EINA_UNUSED,
    /* XXX disabled for now. */
    /* return; */
 
-   e = man->comp->evas;
+   e = e_manager_comp_evas_get(man);
    if (!strcmp(info, "change.comp"))
      {
         if (!e)
@@ -1284,7 +1284,7 @@ _pager_handler(void *data EINA_UNUSED,
    else if (!strcmp(info, "add.src"))
      {
         DBG("%s: %p | %p\n", info, man, src);
-        e_comp_win_hidden_set(src, EINA_TRUE);
+        e_manager_comp_src_hidden_set(man, src, EINA_TRUE);
      }
    else if (!strcmp(info, "del.src"))
      {
